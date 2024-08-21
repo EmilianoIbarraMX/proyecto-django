@@ -1,4 +1,4 @@
-{% extends "inicio/top.html" %}
+ {% extends "inicio/top.html" %}
 
 {% block titulo  %} PRINCIPAL {% endblock %}
 
@@ -39,15 +39,17 @@
     </thead>
 
     <tbody>
+        {% for alumno in 9B%}
         <tr>
             <td class="text-center">
-                <img src="" alt="" class="img-media">
+                <img src="{{alumno.imagen.url}}" alt="" class="img-media">
             </td>
-            <td class="text-semibold">UTM9000TI</td>
-            <td class="muted">Jamaiquino</td>
-            <td class="muted">Tic</td>
-            <td class="muted">Matutino</td>
+            <td class="text-semibold">{{alumno.matricula}}</td>
+            <td class="muted">{{alumno.nombre}}</td>
+            <td class="muted">{{alumno.carrera}}</td>
+            <td class="muted">{{alumno.turno}}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 <!-- /Tabla de alulmnos -->

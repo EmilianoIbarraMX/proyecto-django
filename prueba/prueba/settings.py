@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inicio',
+    'registros.apps.RegistrosConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,32 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Archivos fotográficos
+
+MEDIA_URL = '/meedia/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+#CKEDITOR
+
+CKEDITOR_CONFIGS ={
+    'default':{'toolbar': 'custom',
+    'toolbar_custom' : [
+        ['Bold', 'Italic', 'Underline'],
+        ['NumeredList','BulletedList', '-','Outdent', 'Indent','-',
+        'JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+         ['Link','Unlink'],
+         ['RemoveFormat','Source']
+    ]
+    }
+}
+
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'ejemplo',
+'USER': 'root',
+'HOST': 'localhost',
+'PORT': '3306',
+    }
+}

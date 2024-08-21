@@ -1,0 +1,54 @@
+{% extends "inicio/top.html" %}
+
+{% block titulo  %} Consulta los comentarios {% endblock %}
+
+{% block imagen%}
+    {% load static  %}
+    {% static 'inicio/images/home.png'  %}
+{% endblock  %}
+
+{% block subtitulo%} Comentarios {% endblock%}
+{% block span%} <span> Ver comentarios  </span> {% endblock%}
+
+{% block top %}
+
+<!--Encabezdo -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>Alumnos
+        <small>Lista de Comentarios </small></h3>
+    </div>
+
+    
+</div>
+<!-- /Encabezado-->
+
+{% endblock %}
+
+{% block contenido %}
+<!-- Tabla de alulmnos -->
+<table class="table table-borded table-striped">
+    <thead>
+        <tr>
+            
+            <th>Usuario</th>
+            <th>Mensaje</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+    {% for comentario in comentarios%}
+    <tr>
+
+        <td class="text-semibold">{{comentario.usuario}}</td>
+        <td class="muted">{{comentario.mensaje}}</td>
+        <td class="text-center">
+        <td class="muted"><a href="{%url 'ConsultaIndividual' comentario.id %}">Editar</a></td>
+        <td class="muted"><a href="{%url 'Eliminar' comentario.id%}">Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+<!-- /Tabla de alulmnos -->
+{% endblock  %}
